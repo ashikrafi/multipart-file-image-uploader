@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Multipart Image Uploader</title>
-</head>
 <body>
   <h1>Multipart Image Uploader</h1>
   <p>This application allows you to upload multiple images at once, and returns the base64 encoded data for each image.</p>
