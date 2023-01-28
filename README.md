@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Multipart Image Uploader</h1>
+  <h1>Multipart File/Image Uploader</h1>
   <p>This application allows you to upload multiple images at once, and returns the base64 encoded data for each image.</p>
   <h2>Getting Started</h2>
   <p>The application is built using the Starlette web framework, and Uvicorn as the ASGI server.</p>
