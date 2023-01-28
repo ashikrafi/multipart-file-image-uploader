@@ -1,0 +1,19 @@
+The provided script is a simple file upload server built using the Starlette web framework and the Uvicorn ASGI server. The script allows users to upload image files (in the form of '.jpg', '.jpeg', '.png', '.tif', and '.tiff') to the server, which then saves the files to a specified directory and returns the base64 encoded version of the image files to the client.
+
+The script begins by importing necessary modules including base64, os, uvicorn, Starlette, CORSMiddleware, and JSONResponse.
+
+A Starlette web application object is then initialized with the debug attribute set to True. This allows for helpful error messages to be displayed in the browser during development. A middleware is also added to handle cross-origin resource sharing (CORS) issues, allowing any origin and any headers to be accepted by the server.
+
+A set named ALLOWED_EXTENSIONS is created that contains the allowed file types for uploads. The UPLOAD_FOLDER variable is set to the desired location where the uploaded files should be saved.
+
+The allowed_file() function is defined to check if a given file is of an allowed file type by checking if the file's extension is in the ALLOWED_EXTENSIONS set.
+
+The script then defines an endpoint /upload that will handle HTTP POST requests. When a user makes a POST request to this endpoint, the upload() function is called. This function first retrieves the list of files from the POST request's form data. It then initializes an empty list base64_images that will store the base64 encoded versions of the image files.
+
+A for loop then iterates through each file in the list of files, checking if the file is of an allowed file type using the allowed_file() function. If the file is not of an allowed type, an error message is returned to the client. If the file is of an allowed type, the file is saved to the specified directory and then its base64 encoded version is added to the base64_images list.
+
+Once all files have been processed, a JSON response is sent to the client with a 'success' message and the list of base64 encoded image files.
+
+In the event of an exception, the script returns an error message to the client.
+
+Finally, the script starts the Uvicorn server and binds it to host '0.0.0.0' and port 8009. This makes the server publicly accessible and allows clients to connect to it using the server's IP address.
