@@ -22,7 +22,7 @@ class ImageUploader:
         try:
             form = await request.form()
             files = form.getlist("file")  # get all files in the form
-            base64_images = []
+            response_list = []
             for file in files:
                 filename = file.filename
                 if not self.allowed_file(filename):
@@ -33,8 +33,10 @@ class ImageUploader:
                         f.write(await file.read())
                     with open(save_path, "rb") as image_file:
                         encoded_string = base64.b64encode(image_file.read()).decode()
-                        base64_images.append(encoded_string)
-            return JSONResponse({'result': 'success', 'base64_images': base64_images}, status_code=200)
+                        response_list.append(
+                            {'result': 'success', 'base64_image': encoded_string, 'file_name': filename})
+            # return the final response list after the loop is done
+            return JSONResponse({'response_list': response_list}, status_code=200)
         except Exception as e:
             return JSONResponse({'error': str(e)}, status_code=500)
 
