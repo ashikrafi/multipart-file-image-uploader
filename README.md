@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
-<body>
-  <h1>Multipart File/Image Uploader</h1>
-  <p>This application allows you to upload multiple images at once, and returns the base64 encoded data for each image.</p>
-  <h2>Getting Started</h2>
-  <p>The application is built using the Starlette web framework, and Uvicorn as the ASGI server.</p>
-  <p>To run the application, you will need to have Python (3.6 or higher) and pip installed on your machine.</p>
-  <p>Install the required packages by running <code>pip install -r requirements.txt</code></p>
-  <p>Run the application using <code>uvicorn main:app --host=0.0.0.0 --port=8009</code></p>
-  <h2>Usage</h2>
-  <p>To use the application, make a POST request to the endpoint <code>/upload</code> with a <code>multipart/form-data</code> content type and a file field containing the images you wish to upload.</p>
-  <p>The response will be a JSON object containing the status of the upload, and an array of base64 encoded images.</p>
-  <h3>Example</h3>
-  <h4>Bash</h4>
-  <pre>
-  <code>
-curl -X POST http://localhost:8009/upload
--H 'Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
--F file=@/path/to/image1.jpg
--F file=@/path/to/image2.jpg
-  </code>
-  </pre>
-  <h4>JSON</h4>
-  <pre>
-  <code>
-{ "result": "success", "base64_images": [ "encoded_data_for_image1", "encoded_data_for_image2" ] }
-  </code>
-  </pre>
-  <p>Note: This app allows only jpg, jpeg, png, tif, tiff file types to be uploaded. If you want to allow other types, you can modify ALLOWED_EXTENSIONS variable in the code.</p>
-  <h2>License</h2>
-  <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
-</body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Multipart File/Image Uploader</h1>
+    <p>This is a file/image uploader application built using Starlette, Uvicorn and Base64. It allows for the uploading of multiple image files in the following formats: jpg, jpeg, png, tif, and tiff.</p>
+    <h2>Getting Started</h2>
+    <p>These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.</p>
+    <h3>Prerequisites</h3>
+    <ul>
+      <li>Python 3.6+</li>
+      <li>pip</li>
+    </ul>
+    <h3>Installing</h3>
+    <ol>
+      <li>Clone the repository to your local machine</li>
+      <li>Change into the project directory</li>
+      <li>Install the required packages</li>
+      <li>Start the server</li>
+      <li>Test the application by making a POST request to `http://0.0.0.0:8009/upload` with `file` as a key and an image file as the value</li>
+    </ol>
+    <h2>Deployment</h2>
+    <p>The application can be deployed on any web server that supports ASGI (such as Daphne or Gunicorn) or can be containerized using Docker.</p>
+    <h2>Built With</h2>
+    <ul>
+      <li>Starlette</li>
+      <li>Uvicorn</li>
+      <li>Base64</li>
+    </ul>
+    <h2>Authors</h2>
+    <p>Your Name - Initial work</p>
+    <h2>License</h2>
+    <p>This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details</p>
+    <h2>Acknowledgments</h2>
+    <p>Inspiration</p>
+  </body>
 </html>
+
